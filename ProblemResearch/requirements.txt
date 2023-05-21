@@ -1,0 +1,11 @@
+pandas
+numpy
+matplotlib
+seaborn
+pyreadstat
+requests
+bs4
+time
+string
+nltk
+sklearn
