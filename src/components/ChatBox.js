@@ -18,17 +18,24 @@ const ChatBox = () => {
             sender: 'Bot',
         },
     ]);
+    const [userMsg, setUserMsg] = useState('');
 
     const addMessage = text => {
         setmessage([...message, { message: text, sender: 'User' }]);
-        getFeedback(text).then(response => {
-            setmessage([
-                ...message,
-                { message: text, sender: 'User' },
-                { message: response.data, sender: 'Bot' },
-            ]);
-        });
+        setUserMsg(text);
     };
+
+    useEffect(() => {
+        if (userMsg !== '') {
+            getFeedback(userMsg).then(response => {
+                setmessage([
+                    ...message,
+                    { message: response.data, sender: 'Bot' },
+                ]);
+            });
+            setUserMsg('');
+        }
+    }, [message, userMsg]);
 
     return (
         <div
