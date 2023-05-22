@@ -1,9 +1,7 @@
-import { FormLayout, TextField } from '@shopify/polaris';
+import { LandingPage } from "./pages/LandingPage/LandingPage";
 
-export const App = () => (
-	<FormLayout>
-		<TextField label='First Label' autoComplete='off' />
-	</FormLayout>
-);
+export const App = () => {
+  return <LandingPage />;
+};
 
 export default App;
