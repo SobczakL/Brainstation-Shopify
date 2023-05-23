@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
-import {
-    MainContainer,
-    ChatContainer,
-    MessageList,
-    Message,
-    MessageInput,
-} from '@chatscope/chat-ui-kit-react';
+import { TextField } from '@shopify/polaris';
+// import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+// import {
+//     MainContainer,
+//     ChatContainer,
+//     MessageList,
+//     Message,
+//     MessageInput,
+// } from '@chatscope/chat-ui-kit-react';
 import './chatbox.scss';
 
 import { getFeedback } from '../axios';
@@ -38,17 +39,20 @@ const ChatBox = () => {
     }, [message, userMsg]);
 
     return (
-        <div
-            style={{
-                position: 'fixed',
-                bottom: '50px',
-                right: '50px',
-                height: '500px',
-                width: '300px',
-                borderRadius: '5px',
-            }}
-        >
-            <MainContainer style={{ borderRadius: '20px' }}>
+        <div className="chatbot-frame">
+            <div className="chatbot-box">
+                <div className="chatbot-box__header">
+                    <span className="title">Shopify Bot</span>
+                </div>
+                <div className="chatbot-box__body">
+                    <div className="message-list"></div>
+                    <div className="input">
+                        <input placeholder="Chat" />
+                    </div>
+                </div>
+            </div>
+
+            {/* <MainContainer style={{ borderRadius: '20px' }}>
                 <ChatContainer>
                     <MessageList style={{ paddingTop: '10px' }}>
                         {message &&
@@ -82,7 +86,7 @@ const ChatBox = () => {
                         onSend={text => addMessage(text)}
                     />
                 </ChatContainer>
-            </MainContainer>
+            </MainContainer> */}
         </div>
     );
 };
