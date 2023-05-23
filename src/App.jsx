@@ -12,7 +12,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/process-page" element={<ProcessPage />} />
-                    {/* <Route path="/step-2" element={} /> */}
+                    <Route path="/themes" element={''} />
                     {/* <Route path="/step-3" element={} /> */}
                     {/* <Route path="/step-4" element={} /> */}
                     {/* <Route path="/step-5" element={} /> */}

@@ -1,10 +1,13 @@
 import { HorizontalStack, Button, ButtonGroup, Layout, LegacyCard, Page, Text, } from "@shopify/polaris";
 import { StepperContainer } from "../StepperContainer/StepperContainer";
+import { useNavigate } from "react-router-dom";
 
-export const MainProcess   = ({ stepCounter, handleStepChange, stepContent }) => {
+export const MainProcess = ({ stepCounter, handleStepChange, stepContent }) => {
+
+    const navigate = useNavigate()
 
     const handleSkip = () => {
-
+        navigate('/themes')
     }
 
     return (
@@ -19,6 +22,7 @@ export const MainProcess   = ({ stepCounter, handleStepChange, stepContent }) =>
                     </div>
                 }
                 >
+                    <LegacyCard.Section />
                     <LegacyCard.Section>
                         {stepContent.content}
                     </LegacyCard.Section>
