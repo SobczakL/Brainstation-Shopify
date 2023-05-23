@@ -5,7 +5,9 @@ import { getFeedback } from '../../axios';
 import Message from './Message';
 
 const ChatBox = props => {
-    const bottomRef = useRef(null);
+    const msgListRef = useRef(undefined);
+    const [url, setUrl] = useState(undefined);
+    const [userMsg, setUserMsg] = useState('');
     const [messages, setmessages] = useState([
         {
             message:
@@ -30,28 +32,42 @@ const ChatBox = props => {
             sender: 'Bot',
         },
     ]);
-    const [userMsg, setUserMsg] = useState('');
 
     const addMessage = text => {
         setmessages([...messages, { message: text, sender: 'User' }]);
-        setUserMsg(text);
+    };
+
+    const handleKeyDown = e => {
+        if (e.key === 'Enter' && e.target.value !== '') {
+            addMessage(e.target.value);
+            setUserMsg('');
+        }
+    };
+
+    const handleMsgChange = e => {
+        setUserMsg(e.target.value);
     };
 
     useEffect(() => {
-        if (userMsg !== '') {
-            getFeedback(userMsg).then(response => {
-                setmessages([
-                    ...messages,
-                    { message: response.data, sender: 'Bot' },
-                ]);
-            });
-            setUserMsg('');
-        }
+        // if (userMsg !== '') {
+        //     getFeedback(userMsg).then(response => {
+        //         setmessages([
+        //             ...messages,
+        //             { message: response.data, sender: 'Bot' },
+        //         ]);
+        //     });
+        //     setUserMsg('');
+        // }
     }, [messages, userMsg]);
 
     useEffect(() => {
-        bottomRef.current.scrollIntoView();
-    }, []);
+        const url = window.location.pathname;
+        setUrl(url);
+    }, [window.location.pathname]);
+
+    useEffect(() => {
+        msgListRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }, [userMsg]);
 
     return (
         <div className="chatbot-frame">
@@ -61,7 +77,10 @@ const ChatBox = props => {
                 </div>
                 <div className="chatbot-box__body">
                     <div className="message-container">
-                        <div className="message-container__list">
+                        <div
+                            className="message-container__list"
+                            ref={msgListRef}
+                        >
                             {messages &&
                                 messages.map((msg, i) => {
                                     return (
@@ -73,10 +92,14 @@ const ChatBox = props => {
                                     );
                                 })}
                         </div>
-                        <div ref={bottomRef}></div>
                     </div>
                     <div className="input">
-                        <input placeholder="Chat" />
+                        <input
+                            placeholder="Chat"
+                            value={userMsg}
+                            onChange={e => handleMsgChange(e)}
+                            onKeyDown={e => handleKeyDown(e)}
+                        />
                     </div>
                 </div>
             </div>
