@@ -1,46 +1,40 @@
-import { Button, Modal, TextContainer } from "@shopify/polaris";
+import { HorizontalStack, Button, ButtonGroup, Layout, LegacyCard, Page, Text, } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 import { StepperContainer } from "../StepperContainer/StepperContainer";
 
-export const MainModal = ({stepCounter, handleStepChange, stepContent}) => {
+export const MainModal = ({ stepCounter, handleStepChange, stepContent }) => {
 
-    const [active, setActive] = useState(true);
+    const handleSkip = () => {
 
-    const handleChange = useCallback(() => setActive(!active), [active]);
-
-    const activator = <Button onClick={handleChange}>Open</Button>;
+    }
 
     return (
-        <div style={{ height: "500px" }}>
-            <Modal
-                activator={activator}
-                open={active}
-                onClose={handleChange}
+        <Page narrowWidth>
+            <Layout>
+                <Layout.Section>
+                <LegacyCard
                 title={
-                    <div
-                    display='flex'
-                    gap='8px'
-                    >
-                        <StepperContainer stepCounter={stepCounter}/>
-                        {stepContent.title}
+                    <div display="flex" gap="8px">
+                        <StepperContainer stepCounter={stepCounter} />
+                        <Text variant='headingLg' >{stepContent.title}</Text>
                     </div>
                 }
-                primaryAction={{
-                    content: "Continue",
-                    onAction: handleStepChange,
-                }}
-                secondaryActions={[
-                    {
-                        content: "Skip",
-                        onAction: handleChange,
-                    },
-                ]}
-            >
-                <Modal.Section>
-                    {stepContent.content}
-                </Modal.Section>
-                
-            </Modal>
-        </div>
+                >
+                    <LegacyCard.Section>
+                        {stepContent.content}
+                    </LegacyCard.Section>
+                    <LegacyCard.Section>
+                        <HorizontalStack align='end'>
+                        <ButtonGroup>
+                            <Button onClick={handleSkip}>Skip</Button>
+                            <Button primary onClick={handleStepChange}>Continue</Button>
+                        </ButtonGroup>
+                        </HorizontalStack>
+                    </LegacyCard.Section>
+                </LegacyCard>  
+                </Layout.Section>
+            </Layout> 
+        </Page>
     );
-}
+
+};
