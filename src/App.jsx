@@ -1,6 +1,7 @@
 import { LandingPage } from './pages/LandingPage/LandingPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ChatBox from './components/ChatBot/ChatBot';
+import { ProcessPage } from './pages/ProcessPage/ProcessPage';
 
 function App() {
     return (
@@ -9,7 +10,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
-                    {/* <Route path="/step-1" element={} /> */}
+                    <Route path="/process-page" element={<ProcessPage />} />
                     {/* <Route path="/step-2" element={} /> */}
                     {/* <Route path="/step-3" element={} /> */}
                     {/* <Route path="/step-4" element={} /> */}
