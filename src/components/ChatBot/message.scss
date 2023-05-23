@@ -1,0 +1,36 @@
+.message-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 32px;
+    max-width: 246px;
+    
+}
+
+.icon {
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+
+    &--bot {
+        background-color: #017f5f;
+    }
+
+    &--user {
+        background-color: #c4c4c4;
+    }
+}
+
+.message {
+    flex: 1;
+    font-size: 12px;
+    min-height: 32px;
+    max-width: 206px;
+    height: fit-content;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding: 10px;
+}

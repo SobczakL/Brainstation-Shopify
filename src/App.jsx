@@ -1,6 +1,6 @@
 import { LandingPage } from './pages/LandingPage/LandingPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ChatBox from './components/ChatBox';
+import ChatBox from './components/ChatBot/ChatBot';
 
 function App() {
     return (
