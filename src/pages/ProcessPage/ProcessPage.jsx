@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { MainModal } from "../../components/Modal/MainModal";
+import { MainProcess } from "../../components/MainProcess/MainModal";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { useState } from "react";
 // import { Nav } from "../../components/Nav/Nav";
@@ -21,7 +21,7 @@ export const ProcessPage = () => {
     ];
 
     return (
-        <MainModal
+        <MainProcess
             stepCounter={stepCounter}
             handleStepChange={handleStepChange}
             stepContent={steps[stepCounter]}

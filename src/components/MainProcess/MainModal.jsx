@@ -1,8 +1,7 @@
 import { HorizontalStack, Button, ButtonGroup, Layout, LegacyCard, Page, Text, } from "@shopify/polaris";
-import { useState, useCallback } from "react";
 import { StepperContainer } from "../StepperContainer/StepperContainer";
 
-export const MainModal = ({ stepCounter, handleStepChange, stepContent }) => {
+export const MainProcess   = ({ stepCounter, handleStepChange, stepContent }) => {
 
     const handleSkip = () => {
 
