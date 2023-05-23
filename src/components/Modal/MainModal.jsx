@@ -1,9 +1,8 @@
 import { Button, Modal, TextContainer } from "@shopify/polaris";
 import { useState, useCallback } from "react";
+import { StepperContainer } from "../StepperContainer/StepperContainer";
 
 export const MainModal = ({stepCounter, handleStepChange, stepContent}) => {
-
-    const currentStep = stepCounter + 1
 
     const [active, setActive] = useState(true);
 
@@ -13,14 +12,19 @@ export const MainModal = ({stepCounter, handleStepChange, stepContent}) => {
 
     return (
         <div style={{ height: "500px" }}>
-            <div>
-                {}
-            </div>
             <Modal
                 activator={activator}
                 open={active}
                 onClose={handleChange}
-                title={stepContent.title}
+                title={
+                    <div
+                    display='flex'
+                    gap='8px'
+                    >
+                        <StepperContainer stepCounter={stepCounter}/>
+                        {stepContent.title}
+                    </div>
+                }
                 primaryAction={{
                     content: "Continue",
                     onAction: handleStepChange,
@@ -35,6 +39,7 @@ export const MainModal = ({stepCounter, handleStepChange, stepContent}) => {
                 <Modal.Section>
                     {stepContent.content}
                 </Modal.Section>
+                
             </Modal>
         </div>
     );
