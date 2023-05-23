@@ -39,6 +39,21 @@ export const ProcessPage = () => {
             title: "Where are you doing business?",
             content: <WorldMap handleStepValueChange={handleStepValueChange}/>,
         },
+        {   
+            key: 'step3',
+            title: "Choose your theme",
+            content: '',
+        },
+        {   
+            key: 'step4',
+            title: "Color palette",
+            content: '',
+        },
+        {   
+            key: 'step5',
+            title: "Final details",
+            content: '',
+        },
     ];
 
     return (
