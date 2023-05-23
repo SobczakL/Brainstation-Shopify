@@ -7,7 +7,10 @@
     align-items: flex-end;
     min-height: 32px;
     max-width: 246px;
-    
+
+    &--user {
+        align-self: flex-end;
+    }
 }
 
 .icon {

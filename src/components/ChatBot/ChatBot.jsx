@@ -15,7 +15,7 @@ const ChatBox = props => {
         {
             message:
                 'Hello, what can I do for you?Hello, what can I do for you?Hello, what can I do for you?',
-            sender: 'Bot',
+            sender: 'User',
         },
         {
             message: 'Hello, what can I do for you?',
@@ -23,7 +23,7 @@ const ChatBox = props => {
         },
         {
             message: 'Hello, what can I do for you?',
-            sender: 'Bot',
+            sender: 'User',
         },
         {
             message: 'Hello, what can I do for you?',
