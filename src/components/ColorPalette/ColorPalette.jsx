@@ -1,8 +1,8 @@
 import { Box, Button, ButtonGroup, HorizontalStack, Text, VerticalStack } from "@shopify/polaris"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { RefreshMajor } from '@shopify/polaris-icons';
 
-export const ColorPalette = () => {
+export const ColorPalette = ({handleStepValueChange}) => {
 
     const palettes = [
         {
@@ -33,8 +33,13 @@ export const ColorPalette = () => {
 
     const [currentPalette, setCurrentPalette] = useState(palettes[0])
 
+    useEffect(() => {
+        handleStepValueChange(currentPalette.title);
+    }, [])
+
     const handlePaletteChange = (palette) => {
         setCurrentPalette(palette)
+        handleStepValueChange(palette.title)
     }
 
     const handleRefresh = () => {

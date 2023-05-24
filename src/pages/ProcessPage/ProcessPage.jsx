@@ -41,7 +41,7 @@ export const ProcessPage = (props) => {
         {   
             key: 'step4',
             title: "Color palette",
-            content: <ColorPalette />,
+            content: <ColorPalette handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step5',

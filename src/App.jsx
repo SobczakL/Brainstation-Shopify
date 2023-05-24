@@ -8,7 +8,9 @@ function App() {
     const [stepCounter, setStepCounter] = useState(0);
 
     const handleStepChange = () => {
-        if (stepCounter < 4) setStepCounter(stepCounter + 1);
+        if (stepCounter < 4) {
+            setStepCounter(stepCounter + 1);
+        }
     };
 
     const [stepValues, setStepValues] = useState(new Array(5).fill(''));
