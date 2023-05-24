@@ -1,11 +1,13 @@
-import { Box, Button, ButtonGroup, Text, VerticalStack } from "@shopify/polaris"
+import { Box, Button, ButtonGroup, HorizontalStack, Text, VerticalStack } from "@shopify/polaris"
+import { useState } from "react"
+import { RefreshMajor } from '@shopify/polaris-icons';
 
 export const ColorPalette = () => {
 
     const palettes = [
         {
             title:'Warm',
-            colors:['#D90429', '#EF233C', '#EDF2F4', '#8D99AE', '#2B2D42']
+            colors:['#F08080', '#FCD5CE', '#F8EDEB', '#F9DCC4', '#FEC89A']
         },
         {
             title:'Cold',
@@ -29,6 +31,16 @@ export const ColorPalette = () => {
         }
     ]
 
+    const [currentPalette, setCurrentPalette] = useState(palettes[0])
+
+    const handlePaletteChange = (palette) => {
+        setCurrentPalette(palette)
+    }
+
+    const handleRefresh = () => {
+
+    }
+
     return(
         <VerticalStack gap='10'>
             <div style={{
@@ -40,7 +52,12 @@ export const ColorPalette = () => {
                 <ButtonGroup>
                     {palettes.map((palette) => {
                         return (
-                            <Button>{palette.title}</Button>
+                            <Button 
+                                onClick={() => handlePaletteChange(palette)}
+                                pressed={currentPalette.title === palette.title ? true : false}
+                            >
+                                    {palette.title}
+                            </Button>
                         )
                     })}
                 </ButtonGroup>
@@ -51,7 +68,21 @@ export const ColorPalette = () => {
                 gap:'8px'
             }}>
                 <Text variant='bodyMd'>Colour Palette:</Text>
-                
+                <HorizontalStack>
+                    {currentPalette.colors.map((color) => {
+                        return (
+                            <div style={{
+                                width:'50px',
+                                height:'90px',
+                                backgroundColor:color
+                            }}>
+                            </div>
+                        )
+                    })}
+                </HorizontalStack>
+                <Box maxWidth="fit-content">
+                    <Button icon={RefreshMajor} onClick={handleRefresh}>Refresh</Button>
+                </Box>
             </div>
         </VerticalStack>
     )
