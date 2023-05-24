@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { MainProcess } from "../../components/MainProcess/MainProcess";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
+import { Page, FooterHelp, Link } from "@shopify/polaris";
 import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
 import { ConfirmationProcess } from "../../components/ConfirmationProcess/ConfirmationProcess";
 import ChooseTheme from "../../components/ChooseTheme/ChooseTheme";
-// import { Nav } from "../../components/Nav/Nav";
 
 export const ProcessPage = (props) => {
     // const [stepCounter, setStepCounter] = useState(0);
@@ -53,7 +53,8 @@ export const ProcessPage = (props) => {
     ];
 
     return (
-            props.stepCounter < 5 ? (
+        <Page>
+            {props.stepCounter < 5 ? (
                 <MainProcess
                 stepCounter={props.stepCounter}
                 handleStepChange={props.handleStepChange}
@@ -63,6 +64,13 @@ export const ProcessPage = (props) => {
                 <ConfirmationProcess
                 stepCounter={props.stepCounter}
                 />
-            )
+            )}
+            <FooterHelp>
+                Learn more about{' '}
+                <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+                    Shopify
+                </Link>
+            </FooterHelp>
+        </Page>
     );
 };

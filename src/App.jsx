@@ -36,7 +36,7 @@ function App() {
     }, [stepCounter]);
 
     const handleStepChange = () => {
-        if (stepCounter < 4) {
+        if (stepCounter < 5) {
             // if (stepValues[stepCounter] !== '') {
             setStepCounter(stepCounter + 1);
             // }
