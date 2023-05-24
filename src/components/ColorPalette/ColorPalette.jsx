@@ -31,11 +31,7 @@ export const ColorPalette = ({handleStepValueChange}) => {
         }
     ]
 
-    const [currentPalette, setCurrentPalette] = useState(palettes[0])
-
-    useEffect(() => {
-        handleStepValueChange(currentPalette.title);
-    }, [])
+    const [currentPalette, setCurrentPalette] = useState({title: '', colors:[]})
 
     const handlePaletteChange = (palette) => {
         setCurrentPalette(palette)

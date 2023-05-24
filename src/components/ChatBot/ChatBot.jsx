@@ -6,40 +6,11 @@ import Message from './Message';
 
 const ChatBox = props => {
     const msgListRef = useRef(undefined);
-    const [url, setUrl] = useState(undefined);
     const [userMsg, setUserMsg] = useState('');
-    const [messages, setmessages] = useState([
-        {
-            message:
-                'Hello, what can I do for you?Hello, what can I do for you?Hello, what can I do for you?',
-            sender: 'Bot',
-        },
-        {
-            message:
-                'Hello, what can I do for you?Hello, what can I do for you?Hello, what can I do for you?',
-            sender: 'User',
-        },
-        {
-            message: 'Hello, what can I do for you?',
-            sender: 'Bot',
-        },
-        {
-            message: 'Hello, what can I do for you?',
-            sender: 'User',
-        },
-        {
-            message: 'Hello, what can I do for you?',
-            sender: 'Bot',
-        },
-    ]);
-
-    const addMessage = text => {
-        setmessages([...messages, { message: text, sender: 'User' }]);
-    };
 
     const handleKeyDown = e => {
         if (e.key === 'Enter' && e.target.value !== '') {
-            addMessage(e.target.value);
+            props.addMessage(e.target.value, 'User');
             setUserMsg('');
         }
     };
@@ -58,22 +29,17 @@ const ChatBox = props => {
         //     });
         //     setUserMsg('');
         // }
-    }, [messages, userMsg]);
-
-    useEffect(() => {
-        const url = window.location.pathname;
-        setUrl(url);
-    }, [window.location.pathname]);
+    }, [props.messages, userMsg]);
 
     useEffect(() => {
         msgListRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }, [userMsg]);
+    });
 
     return (
         <div className="chatbot-frame">
             <div className="chatbot-box">
                 <div className="chatbot-box__header">
-                    <span className="title">Shopify Bot</span>
+                    <span className="title">Ada</span>
                 </div>
                 <div className="chatbot-box__body">
                     <div className="message-container">
@@ -81,8 +47,8 @@ const ChatBox = props => {
                             className="message-container__list"
                             ref={msgListRef}
                         >
-                            {messages &&
-                                messages.map((msg, i) => {
+                            {props.messages &&
+                                props.messages.map((msg, i) => {
                                     return (
                                         <Message
                                             key={i}
