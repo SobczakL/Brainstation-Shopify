@@ -7,6 +7,7 @@ import { ThemesPage } from "./pages/ThemesPage/ThemesPage";
 import { getFeedback } from "./axios";
 
 import "./App.scss";
+import { Nav } from "./components/Nav/Nav";
 
 function App() {
     const [stepCounter, setStepCounter] = useState(0);
@@ -199,6 +200,7 @@ function App() {
 
     return (
         <>
+            <Nav />
             <ChatBox messages={messages} addMessage={addMessage} />
             <BrowserRouter>
                 <Routes>
