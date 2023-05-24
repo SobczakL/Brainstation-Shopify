@@ -7,7 +7,7 @@ export const LandingPage = () => {
   const navigate = useNavigate()
 
   const handleContinueClick = () => {
-    navigate('/step-1')
+    navigate('/process-page')
   }
   // <Nav />;
   // <SideNav />;
