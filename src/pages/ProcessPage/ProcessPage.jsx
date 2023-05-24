@@ -26,7 +26,6 @@ export const ProcessPage = () => {
             ...prevStepValues,
             [steps[stepCounter].key]: updatedValue,
         }));
-        console.log(stepValues)
     }
 
     const steps = [
