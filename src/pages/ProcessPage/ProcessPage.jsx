@@ -4,30 +4,25 @@ import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
 import { ConfirmationProcess } from "../../components/ConfirmationProcess/ConfirmationProcess";
+import ChooseTheme from "../../components/ChooseTheme/ChooseTheme";
 // import { Nav } from "../../components/Nav/Nav";
 
-export const ProcessPage = () => {
-    const [stepCounter, setStepCounter] = useState(0);
+export const ProcessPage = (props) => {
+    // const [stepCounter, setStepCounter] = useState(0);
 
-    const handleStepChange = () => {
-        setStepCounter(stepCounter + 1);
-    };
+    // const handleStepChange = () => {
+    //     setStepCounter(stepCounter + 1);
+    // };
 
-    const [stepValues, setStepValues] = useState({
-        step1: '',
-        step2: '',
-        step3: '',
-        step4: '',
-        step5: '',
-    })
+    // const [stepValues, setStepValues] = useState(new Array(5).fill(''))
 
-    //when steps[stepCounter].content receives a value, update stepValues for chatBox
-    const handleStepValueChange = (updatedValue) => {
-        setStepValues((prevStepValues) => ({
-            ...prevStepValues,
-            [steps[stepCounter].key]: updatedValue,
-        }));
-    }
+    // //when steps[stepCounter].content receives a value, update stepValues for chatBox
+    // const handleStepValueChange = (updatedValue) => {
+    //     setStepValues((prevStepValues) => ({
+    //         ...prevStepValues,
+    //         [stepValues[stepCounter].key]: updatedValue,
+    //     }));
+    // }
 
     const steps = [
         { 
@@ -38,17 +33,17 @@ export const ProcessPage = () => {
         {   
             key: 'step2',
             title: "Where are you doing business?",
-            content: <WorldMap handleStepValueChange={handleStepValueChange}/>,
+            content: <WorldMap handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step3',
             title: "Choose your theme",
-            content: '',
+            content: <ChooseTheme handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step4',
             title: "Color palette",
-            content: <ColorPalette />,
+            content: <ColorPalette handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step5',
@@ -58,15 +53,15 @@ export const ProcessPage = () => {
     ];
 
     return (
-            stepCounter < 5 ? (
+            props.stepCounter < 5 ? (
                 <MainProcess
-                stepCounter={stepCounter}
-                handleStepChange={handleStepChange}
-                stepContent={steps[stepCounter]}
+                stepCounter={props.stepCounter}
+                handleStepChange={props.handleStepChange}
+                stepContent={steps[props.stepCounter]}
                 />
             ) : (
                 <ConfirmationProcess
-                stepCounter={stepCounter}
+                stepCounter={props.stepCounter}
                 />
             )
     );
