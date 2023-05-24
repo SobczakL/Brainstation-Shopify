@@ -5,28 +5,22 @@ import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
 // import { Nav } from "../../components/Nav/Nav";
 
-export const ProcessPage = () => {
-    const [stepCounter, setStepCounter] = useState(0);
+export const ProcessPage = (props) => {
+    // const [stepCounter, setStepCounter] = useState(0);
 
-    const handleStepChange = () => {
-        setStepCounter(stepCounter + 1);
-    };
+    // const handleStepChange = () => {
+    //     setStepCounter(stepCounter + 1);
+    // };
 
-    const [stepValues, setStepValues] = useState({
-        step1: '',
-        step2: '',
-        step3: '',
-        step4: '',
-        step5: '',
-    })
+    // const [stepValues, setStepValues] = useState(new Array(5).fill(''))
 
-    //when steps[stepCounter].content receives a value, update stepValues for chatBox
-    const handleStepValueChange = (updatedValue) => {
-        setStepValues((prevStepValues) => ({
-            ...prevStepValues,
-            [steps[stepCounter].key]: updatedValue,
-        }));
-    }
+    // //when steps[stepCounter].content receives a value, update stepValues for chatBox
+    // const handleStepValueChange = (updatedValue) => {
+    //     setStepValues((prevStepValues) => ({
+    //         ...prevStepValues,
+    //         [stepValues[stepCounter].key]: updatedValue,
+    //     }));
+    // }
 
     const steps = [
         { 
@@ -37,7 +31,7 @@ export const ProcessPage = () => {
         {   
             key: 'step2',
             title: "Where are you doing business?",
-            content: <WorldMap handleStepValueChange={handleStepValueChange}/>,
+            content: <WorldMap handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step3',
@@ -58,9 +52,9 @@ export const ProcessPage = () => {
 
     return (
         <MainProcess
-            stepCounter={stepCounter}
-            handleStepChange={handleStepChange}
-            stepContent={steps[stepCounter]}
+            stepCounter={props.stepCounter}
+            handleStepChange={props.handleStepChange}
+            stepContent={steps[props.stepCounter]}
         />
     );
 };
