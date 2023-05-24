@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./chatbot.scss";
-
-import { getFeedback } from "../../axios";
 import Message from "./Message";
 
 const ChatBox = props => {
@@ -27,18 +25,6 @@ const ChatBox = props => {
     const handleOpen = () => {
         setIsOpen(true);
     };
-
-    useEffect(() => {
-        // if (userMsg !== '') {
-        //     getFeedback(userMsg).then(response => {
-        //         setmessages([
-        //             ...messages,
-        //             { message: response.data, sender: 'Bot' },
-        //         ]);
-        //     });
-        //     setUserMsg('');
-        // }
-    }, [props.messages, userMsg]);
 
     useEffect(() => {
         if (isOpen)

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ChatBox from "./components/ChatBot/ChatBot";
 import { ProcessPage } from "./pages/ProcessPage/ProcessPage";
 import { ThemesPage } from "./pages/ThemesPage/ThemesPage";
+import { getFeedback } from "./axios";
 
 import "./App.scss";
 
@@ -175,6 +176,22 @@ function App() {
 
     const addMessage = (text, sender) => {
         setmessages([...messages, { message: text, sender: sender }]);
+        if (sender === "User") {
+            getFeedback(text)
+                .then(response => {
+                    setmessages([
+                        ...messages,
+                        { message: text, sender: "User" },
+                        { message: response.data, sender: "Bot" },
+                    ]);
+                })
+                .catch(_error => {
+                    setmessages([
+                        ...messages,
+                        { message: text, sender: "User" },
+                    ]);
+                });
+        }
     };
 
     return (
