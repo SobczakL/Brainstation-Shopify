@@ -1,11 +1,24 @@
-import { HorizontalStack, LegacyCard, Text, VerticalStack, Box, Badge, ButtonGroup, Button } from "@shopify/polaris"
-import { HorizontalDotsMinor } from '@shopify/polaris-icons';
+import { HorizontalStack, LegacyCard, Text, VerticalStack, Banner, Badge, ButtonGroup, Button } from "@shopify/polaris"
+import { HorizontalDotsMinor, LockMajor } from '@shopify/polaris-icons';
+import mockup from '../../assets/images/mockup.png'
 
 export const MockupContainer = () => {
     return(
         <LegacyCard>
             <LegacyCard.Section>
-                <img src={''} alt=""/>
+                <img src={mockup} alt="" style={{width:'100%'}}/>
+            </LegacyCard.Section>
+            <LegacyCard.Section>
+                <Banner
+                status='warning'
+                icon={LockMajor}
+                >
+                    <Text variant='bodysm' as='p'>Your online store is password protected.</Text>
+                    <ButtonGroup>
+                        <Button plain monochrome>Manage Password</Button>
+                        <Button outline>Remove Password</Button>
+                    </ButtonGroup>
+                </Banner>
             </LegacyCard.Section>
             <LegacyCard.Section>
                 <HorizontalStack align="space-between">
