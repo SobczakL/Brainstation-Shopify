@@ -182,8 +182,11 @@ function App() {
                     setmessages([
                         ...messages,
                         { message: text, sender: "User" },
-                        { message: response.data, sender: "Bot" },
+                        { message: response.data.answer, sender: "Bot" },
                     ]);
+                    const keyWord = response.data.intent.split("-");
+                    if (keyWord[0] === "user.step")
+                        setStepCounter(Number(keyWord[1]) - 1);
                 })
                 .catch(_error => {
                     setmessages([
