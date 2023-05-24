@@ -1,4 +1,4 @@
-import { HorizontalStack, Button, ButtonGroup, Layout, LegacyCard, Page, Text, } from "@shopify/polaris";
+import { HorizontalStack, Button, ButtonGroup, Layout, LegacyCard, Page, Text, Divider, VerticalStack, } from "@shopify/polaris";
 import { StepperContainer } from "../StepperContainer/StepperContainer";
 import { useNavigate } from "react-router-dom";
 
@@ -14,27 +14,32 @@ export const MainProcess = ({ stepCounter, handleStepChange, stepContent }) => {
         <Page narrowWidth>
             <Layout>
                 <Layout.Section>
-                <LegacyCard
-                title={
-                    <div display="flex" gap="8px">
-                        <StepperContainer stepCounter={stepCounter} />
-                        <Text variant='headingLg' >{stepContent.title}</Text>
-                    </div>
-                }
-                >
-                    <LegacyCard.Section />
-                    <LegacyCard.Section>
-                        {stepContent.content}
-                    </LegacyCard.Section>
-                    <LegacyCard.Section>
-                        <HorizontalStack align='end'>
-                        <ButtonGroup>
-                            <Button onClick={handleSkip}>Skip</Button>
-                            <Button primary onClick={handleStepChange}>Continue</Button>
-                        </ButtonGroup>
-                        </HorizontalStack>
-                    </LegacyCard.Section>
-                </LegacyCard>  
+                    <LegacyCard
+                    title={
+                        <VerticalStack gap="3">
+                            <StepperContainer stepCounter={stepCounter} />
+                            <Text variant='headingLg'>{stepContent.title}</Text>
+                        </VerticalStack>
+                    }
+                    secondaryFooterActions={[{
+                        content: 'Skip',
+                        onAction: handleSkip
+                    }]}
+                    primaryFooterAction={{
+                        content: 'Continue',
+                        onAction: handleStepChange
+                    }}
+                    >
+                        <div style={{marginTop:'16px'}}>
+                            <Divider /> 
+                        </div>
+                        <LegacyCard.Section>
+                            {stepContent.content}
+                        </LegacyCard.Section>
+                        <div style={{marginBottom:'16px'}}>
+                            <Divider /> 
+                        </div>
+                    </LegacyCard>  
                 </Layout.Section>
             </Layout> 
         </Page>
