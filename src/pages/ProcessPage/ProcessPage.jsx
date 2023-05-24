@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { MainProcess } from "../../components/MainProcess/MainProcess";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { useState } from "react";
+import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
 // import { Nav } from "../../components/Nav/Nav";
 
 export const ProcessPage = () => {
@@ -47,7 +48,7 @@ export const ProcessPage = () => {
         {   
             key: 'step4',
             title: "Color palette",
-            content: '',
+            content: <ColorPalette />,
         },
         {   
             key: 'step5',
