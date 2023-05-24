@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, HorizontalStack, Text, VerticalStack } from "@shopify/polaris"
+import { Box, Button, ButtonGroup, HorizontalStack, Text, VerticalStack, ChoiceList } from "@shopify/polaris"
 import { useState, useEffect } from "react"
 import { RefreshMajor } from '@shopify/polaris-icons';
 
@@ -31,7 +31,7 @@ export const ColorPalette = ({handleStepValueChange}) => {
         }
     ]
 
-    const [currentPalette, setCurrentPalette] = useState({title: '', colors:[]})
+    const [currentPalette, setCurrentPalette] = useState(palettes[0])
 
     const handlePaletteChange = (palette) => {
         setCurrentPalette(palette)
@@ -43,39 +43,40 @@ export const ColorPalette = ({handleStepValueChange}) => {
     }
 
     return(
-        <VerticalStack gap='10'>
+        <HorizontalStack gap='5'>
             <div style={{
                 display:'flex',
                 flexDirection:'column',
-                gap:'8px'
+                gap:'8px',
+                backgroundColor:'#FAFBFB',
+                padding:'8px'
             }}>
                 <Text variant='bodyMd'>Style Descriptor:</Text>
-                <ButtonGroup>
-                    {palettes.map((palette, i) => {
-                        return (
-                            <Button 
-                                key={i}
-                                onClick={() => handlePaletteChange(palette)}
-                                pressed={currentPalette.title === palette.title ? true : false}
-                            >
-                                    {palette.title}
-                            </Button>
-                        )
-                    })}
-                </ButtonGroup>
+                <ChoiceList
+                    choices={palettes.map((palette, i) => ({
+                        key: i,
+                        label: palette.title,
+                        value: palette.title,
+                    }))}
+                    selected={[currentPalette.title]}
+                    onChange={(selected) => {
+                        const palette = palettes.find((p) => p.title === selected[0]);
+                        if (palette) {
+                            handlePaletteChange(palette);
+                        }
+                    }}
+                />
             </div>
-            <div style={{
-                display:'flex',
-                flexDirection:'column',
-                gap:'8px'
-            }}>
+            <VerticalStack 
+            gap='2'
+            >
                 <Text variant='bodyMd'>Colour Palette:</Text>
                 <HorizontalStack>
                     {currentPalette.colors.map((color, i) => {
                         return (
                             <div key={i} style={{
-                                width:'50px',
-                                height:'90px',
+                                width:'80px',
+                                height:'100px',
                                 backgroundColor:color
                             }}>
                             </div>
@@ -85,7 +86,7 @@ export const ColorPalette = ({handleStepValueChange}) => {
                 <Box maxWidth="fit-content">
                     <Button icon={RefreshMajor} onClick={handleRefresh}>Refresh</Button>
                 </Box>
-            </div>
-        </VerticalStack>
+            </VerticalStack>
+        </HorizontalStack>
     )
 }
