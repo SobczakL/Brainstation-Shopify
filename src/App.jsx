@@ -9,6 +9,9 @@ function App() {
 
     useEffect(() => {
         switch (stepCounter) {
+            case 1:
+                addMessage("Where are your business?", "Bot");
+                break;
             case 2:
                 addMessage("Now it's time to select your store theme", "Bot");
                 break;
@@ -118,7 +121,8 @@ function App() {
         let newStepValues = stepValues.slice();
         newStepValues[stepCounter] = updatedValue;
         setStepValues(newStepValues);
-        if (newStepValues[stepCounter] === "") {
+
+        if (stepValues[stepCounter] === "") {
             addMessage(updatedValue, "User");
         } else {
             const newMessages = messages.slice(0, -1);

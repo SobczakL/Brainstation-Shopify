@@ -3,6 +3,7 @@ import { MainProcess } from "../../components/MainProcess/MainProcess";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
+import ChooseTheme from "../../components/ChooseTheme/ChooseTheme";
 // import { Nav } from "../../components/Nav/Nav";
 
 export const ProcessPage = (props) => {
@@ -36,7 +37,7 @@ export const ProcessPage = (props) => {
         {   
             key: 'step3',
             title: "Choose your theme",
-            content: '',
+            content: <ChooseTheme handleStepValueChange={props.handleStepValueChange}/>,
         },
         {   
             key: 'step4',
