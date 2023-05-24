@@ -87,8 +87,10 @@ const ChatBox = props => {
         );
     } else {
         return (
-            <div className="close" onClick={handleOpen}>
-                <span>Ada</span>
+            <div className="bounce-box">
+                <div className="close" onClick={handleOpen}>
+                    <span>Ada</span>
+                </div>
             </div>
         );
     }
