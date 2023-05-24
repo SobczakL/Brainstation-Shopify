@@ -1,4 +1,14 @@
+.group-msg {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
+.link {
+    color: #2c6ecb;
+    text-decoration: underline;
+    cursor: pointer;
+}
 
 /* .App {
   text-align: center;

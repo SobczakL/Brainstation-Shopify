@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { LandingPage } from './pages/LandingPage/LandingPage';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ChatBox from './components/ChatBot/ChatBot';
-import { ProcessPage } from './pages/ProcessPage/ProcessPage';
-import { ThemesPage } from './pages/ThemesPage/ThemesPage';
+import { useState, useEffect } from "react";
+import { LandingPage } from "./pages/LandingPage/LandingPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ChatBox from "./components/ChatBot/ChatBot";
+import { ProcessPage } from "./pages/ProcessPage/ProcessPage";
+import { ThemesPage } from "./pages/ThemesPage/ThemesPage";
 
-// import ChooseTheme from './pages/ChooseTheme/ChooseTheme';
+import "./App.scss";
 
 function App() {
     const [stepCounter, setStepCounter] = useState(0);
@@ -27,6 +27,30 @@ function App() {
             case 4:
                 addMessage(
                     "Almost done! It's time for the final details!",
+                    "Bot"
+                );
+                break;
+            case 5:
+                addMessage(
+                    <div className="group-msg">
+                        <div>Great job setting up your online store!</div>
+                        <div>
+                            For additional tools and features you can visit the{" "}
+                            <span className="link">Shopify App store</span>.
+                        </div>
+                        <div>
+                            For additional support in editing your website you
+                            can visit the{" "}
+                            <span className="link">
+                                Shopify Experts Marketplace
+                            </span>
+                            .
+                        </div>
+                        <div>
+                            We also offer 24/7 support for any issues that may
+                            arise.
+                        </div>
+                    </div>,
                     "Bot"
                 );
                 break;
@@ -97,7 +121,7 @@ function App() {
                 case 4:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the your color palette!",
+                            "Warning! You didn't upload the details!",
                             "Bot"
                         );
                     } else {
