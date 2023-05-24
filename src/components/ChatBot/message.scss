@@ -8,6 +8,10 @@
     min-height: 32px;
     max-width: 246px;
 
+    &--bot {
+        align-self: flex-start;
+    }
+
     &--user {
         align-self: flex-end;
     }
@@ -36,4 +40,5 @@
     background-color: #e9ecef;
     border-radius: 5px;
     padding: 10px;
+    overflow-wrap: break-word;
 }
