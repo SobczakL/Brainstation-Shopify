@@ -26,7 +26,6 @@ export const ProcessPage = () => {
             ...prevStepValues,
             [steps[stepCounter].key]: updatedValue,
         }));
-        console.log(stepValues)
     }
 
     const steps = [
@@ -58,10 +57,18 @@ export const ProcessPage = () => {
     ];
 
     return (
-        <MainProcess
-            stepCounter={stepCounter}
-            handleStepChange={handleStepChange}
-            stepContent={steps[stepCounter]}
-        />
+            stepCounter <= 5 ? (
+                <MainProcess
+                stepCounter={stepCounter}
+                handleStepChange={handleStepChange}
+                stepContent={steps[stepCounter]}
+                />
+            ) : (
+                <MainProcess
+                stepCounter={stepCounter}
+                handleStepChange={handleStepChange}
+                stepContent={steps[stepCounter]}
+                />
+            )
     );
 };

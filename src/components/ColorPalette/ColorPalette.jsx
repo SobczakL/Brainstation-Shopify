@@ -50,9 +50,10 @@ export const ColorPalette = () => {
             }}>
                 <Text variant='bodyMd'>Style Descriptor:</Text>
                 <ButtonGroup>
-                    {palettes.map((palette) => {
+                    {palettes.map((palette, i) => {
                         return (
                             <Button 
+                                key={i}
                                 onClick={() => handlePaletteChange(palette)}
                                 pressed={currentPalette.title === palette.title ? true : false}
                             >
@@ -69,9 +70,9 @@ export const ColorPalette = () => {
             }}>
                 <Text variant='bodyMd'>Colour Palette:</Text>
                 <HorizontalStack>
-                    {currentPalette.colors.map((color) => {
+                    {currentPalette.colors.map((color, i) => {
                         return (
-                            <div style={{
+                            <div key={i} style={{
                                 width:'50px',
                                 height:'90px',
                                 backgroundColor:color
