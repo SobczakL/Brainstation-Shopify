@@ -3,6 +3,7 @@ import { MainProcess } from "../../components/MainProcess/MainProcess";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
+import { ConfirmationProcess } from "../../components/ConfirmationProcess/ConfirmationProcess";
 // import { Nav } from "../../components/Nav/Nav";
 
 export const ProcessPage = () => {
@@ -57,17 +58,15 @@ export const ProcessPage = () => {
     ];
 
     return (
-            stepCounter <= 5 ? (
+            stepCounter < 5 ? (
                 <MainProcess
                 stepCounter={stepCounter}
                 handleStepChange={handleStepChange}
                 stepContent={steps[stepCounter]}
                 />
             ) : (
-                <MainProcess
+                <ConfirmationProcess
                 stepCounter={stepCounter}
-                handleStepChange={handleStepChange}
-                stepContent={steps[stepCounter]}
                 />
             )
     );

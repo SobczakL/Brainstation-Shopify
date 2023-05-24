@@ -5,7 +5,7 @@ export const StepperContainer = ({ stepCounter }) => {
     const currentStep = stepCounter + 1;
 
     let stepStepper = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         let stepperPill = [];
         for (let j = 0; j < 5; j++) {
             if (j <= i) {
@@ -18,44 +18,6 @@ export const StepperContainer = ({ stepCounter }) => {
         }
         stepStepper.push(stepperPill);
     }
-
-    // const stepStepper = [
-    //     [
-    //         <StepperPill backgroundColor={true} />,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //     ],
-    //     [
-    //         <StepperPill backgroundColor={true} />,
-    //         <StepperPill backgroundColor={true} />,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //     ],
-    //     [
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill />,
-    //         <StepperPill />,
-    //     ],
-    //     [
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill />,
-    //     ],
-    //     [
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //         <StepperPill backgroundColor={true}/>,
-    //     ],
-    // ];
 
     return (
         <div
@@ -75,7 +37,7 @@ export const StepperContainer = ({ stepCounter }) => {
             >
                 {stepStepper[stepCounter]}
             </div>
-            <Text variant="bodyMd">{currentStep} of 5</Text>
+            <Text variant="bodyMd">{ stepCounter < 5 ? `${currentStep} of 5` : 'Done'}</Text>
         </div>
     );
 };
