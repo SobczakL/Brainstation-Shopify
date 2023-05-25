@@ -11,10 +11,12 @@ import "@shopify/polaris/build/esm/styles.css";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
+		<BrowserRouter>
 		<AppProvider i18n={translations}>
-			<BrowserRouter>
+			{/* <BrowserRouter> */}
 				<App />
-			</BrowserRouter>
+			{/* </BrowserRouter> */}
 		</AppProvider>
+		</BrowserRouter>
 	</React.StrictMode>
 );
