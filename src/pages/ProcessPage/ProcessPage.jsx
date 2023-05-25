@@ -7,22 +7,6 @@ import ChooseTheme from "../../components/ChooseTheme/ChooseTheme";
 import { UserImageSelection } from "../../components/UserImageSelection/UserImageSelection";
 
 export const ProcessPage = (props) => {
-    // const [stepCounter, setStepCounter] = useState(0);
-
-    // const handleStepChange = () => {
-    //     setStepCounter(stepCounter + 1);
-    // };
-
-    // const [stepValues, setStepValues] = useState(new Array(5).fill(''))
-
-    // //when steps[stepCounter].content receives a value, update stepValues for chatBox
-    // const handleStepValueChange = (updatedValue) => {
-    //     setStepValues((prevStepValues) => ({
-    //         ...prevStepValues,
-    //         [stepValues[stepCounter].key]: updatedValue,
-    //     }));
-    // }
-
     const steps = [
         { 
             key: 'step1',
@@ -58,6 +42,7 @@ export const ProcessPage = (props) => {
                 stepCounter={props.stepCounter}
                 handleStepChange={props.handleStepChange}
                 stepContent={steps[props.stepCounter]}
+                skipSteps={props.skipSteps}
                 />
             ) : (
                 <ConfirmationProcess

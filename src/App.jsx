@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import ChatBox from "./components/ChatBot/ChatBot";
 import { ProcessPage } from "./pages/ProcessPage/ProcessPage";
 import { ThemesPage } from "./pages/ThemesPage/ThemesPage";
@@ -8,10 +8,11 @@ import { getFeedback } from "./axios";
 
 import "./App.scss";
 import { Nav } from "./components/Nav/Nav";
-import { SideNav } from './components/SideNav/SideNav'
+import { SideNav } from "./components/SideNav/SideNav";
 import { Frame } from "@shopify/polaris";
 
 function App() {
+    const navigate = useNavigate()
     const [stepCounter, setStepCounter] = useState(0);
 
     useEffect(() => {
@@ -61,11 +62,16 @@ function App() {
             default:
                 break;
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stepCounter]);
+
+    window.onhashchange = function () {
+        setStepCounter(stepCounter - 1);
+    };
 
     const handleStepChange = () => {
         if (stepCounter < 5) {
-            // if (stepValues[stepCounter] !== '') {
+            // if (stepValues[stepCounter] !== "") {
             setStepCounter(stepCounter + 1);
             // }
 
@@ -73,7 +79,9 @@ function App() {
                 case 0:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose your business type!",
+                            <div className="warning">
+                                Warning! You didn't choose your business type!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -86,12 +94,18 @@ function App() {
                 case 1:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the location of your business!",
+                            <div className="warning">
+                                Warning! You didn't choose the location of your
+                                business!
+                            </div>,
                             "Bot"
                         );
                     } else {
                         addMessage(
-                            `You\'ve selected ${stepValues[stepCounter]}. Terrific!`,
+                            <div>
+                                You've selected {stepValues[stepCounter]}.
+                                Terrific!
+                            </div>,
                             "Bot"
                         );
                     }
@@ -99,7 +113,9 @@ function App() {
                 case 2:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the your theme!",
+                            <div className="warning">
+                                Warning! You didn't choose the your theme!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -112,30 +128,39 @@ function App() {
                 case 3:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the your color palette!",
+                            <div className="warning">
+                                Warning! You didn't choose the your color
+                                palette!
+                            </div>,
                             "Bot"
                         );
                     } else {
                         addMessage(
-                            `You\'ve selected ${stepValues[stepCounter]}. Great choice!`,
+                            <div>
+                                You've selected {stepValues[stepCounter]}. Great
+                                choice!
+                            </div>,
                             "Bot"
                         );
                     }
                     break;
                 case 4:
-                    if (stepValues[stepCounter] === "") {
-                        addMessage(
-                            "Warning! You didn't upload the details!",
-                            "Bot"
-                        );
-                    } else {
-                        addMessage(`You have upload the details.`, "Bot");
-                    }
+                    addMessage("You have upload the details.", "Bot");
                     break;
                 default:
                     break;
             }
         }
+    };
+
+    const skipSteps = () => {
+        addMessage(
+            <div>
+                You've selected to Skip - no worries! You can always come back
+                later.
+            </div>,
+            "Bot"
+        );
     };
 
     const [stepValues, setStepValues] = useState(new Array(5).fill(""));
@@ -147,19 +172,18 @@ function App() {
         );
     };
 
-    //when steps[stepCounter].content receives a value, update stepValues for chatBox
     const handleStepValueChange = updatedValue => {
         let newStepValues = stepValues.slice();
         newStepValues[stepCounter] = updatedValue;
         setStepValues(newStepValues);
 
         if (stepValues[stepCounter] === "") {
-            addMessage(updatedValue, "User");
+            addMessage(updatedValue, "Click");
         } else {
             const newMessages = messages.slice(0, -1);
             setmessages([
                 ...newMessages,
-                { message: updatedValue, sender: "User" },
+                { message: updatedValue, sender: "Click" },
             ]);
         }
     };
@@ -188,8 +212,16 @@ function App() {
                         { message: response.data.answer, sender: "Bot" },
                     ]);
                     const keyWord = response.data.intent.split("-");
-                    if (keyWord[0] === "user.step")
+                    if (keyWord[0] === "nav.step") {
+                        navigate('/process-page')
                         setStepCounter(Number(keyWord[1]) - 1);
+                    }
+                    if(keyWord[0] === 'nav.home'){
+                        navigate('/')
+                    }
+                    if(keyWord[0] === 'nav.themes'){
+                        navigate('/themes')
+                    }
                 })
                 .catch(_error => {
                     setmessages([
@@ -201,34 +233,30 @@ function App() {
     };
 
     return (
-        <Frame
-        topBar={<Nav />}
-        navigation={<SideNav />}
-        >
+        <Frame topBar={<Nav />} navigation={<SideNav />}>
             <ChatBox messages={messages} addMessage={addMessage} />
-            <BrowserRouter>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <LandingPage
-                                handleContinueClick={handleContinueClick}
-                            />
-                        }
-                    />
-                    <Route
-                        path="/process-page"
-                        element={
-                            <ProcessPage
-                                stepCounter={stepCounter}
-                                handleStepChange={handleStepChange}
-                                handleStepValueChange={handleStepValueChange}
-                            />
-                        }
-                    />
-                    <Route path="/themes" element={<ThemesPage />} />
-                </Routes>
-            </BrowserRouter>
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <LandingPage
+                            handleContinueClick={handleContinueClick}
+                        />
+                    }
+                />
+                <Route
+                    path="/process-page"
+                    element={
+                        <ProcessPage
+                            stepCounter={stepCounter}
+                            handleStepChange={handleStepChange}
+                            handleStepValueChange={handleStepValueChange}
+                            skipSteps={skipSteps}
+                        />
+                    }
+                />
+                <Route path="/themes" element={<ThemesPage />} />
+            </Routes>
         </Frame>
     );
 }
