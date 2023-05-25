@@ -10,34 +10,29 @@ import {
     Popover,
     Text,
     VerticalStack,
-    Placeholder,
 } from "@shopify/polaris";
 import {
     StoreMinor,
     PinMajor,
     HorizontalDotsMinor,
-    ViewMajor,
+    ViewMinor,
 } from "@shopify/polaris-icons";
-import { MockupContainer } from "../../components/MockupContainer/MockupContainer";
+import { MockupCard } from "../../components/MockupCard/MockupCard";
 
 export const ThemesPage = () => {
     const Placeholder = ({ label = "", height = "auto", width = "auto" }) => {
         return (
             <div
                 style={{
-                    background: "var(--p-color-text-info)",
+                    background: "#F9FAFB",
                     padding: "14px var(--p-space-2)",
                     height: height,
                     width: width,
                 }}
             >
                 <HorizontalStack gap="4" align="center">
-                    <div
-                        style={{
-                            color: "var(--p-color-text-on-color)",
-                        }}
-                    >
-                        <Text as="h2" variant="bodyMd" fontWeight="regular">
+                    <div>
+                        <Text as="p" variant="bodySm" fontWeight="regular">
                             {label}
                         </Text>
                     </div>
@@ -48,10 +43,10 @@ export const ThemesPage = () => {
 
     return (
         <Page fullWidth>
-            <VerticalStack>
+            <VerticalStack gap='2'>
                 <HorizontalStack align="space-between">
                     <HorizontalStack gap="1">
-                        <Icon source={StoreMinor} color="base" />
+                        <Icon source={StoreMinor} color="#006D41" />
                         <Text>Online Store</Text>
                     </HorizontalStack>
                     <HorizontalStack gap="1">
@@ -60,10 +55,10 @@ export const ThemesPage = () => {
                     </HorizontalStack>
                 </HorizontalStack>
                 <Divider />
-                <Page narrowWidth>
-                    <Layout >
+                <Page >
+                    <Layout>
                         <Layout.Section AnnotatedSection>
-                            <div style={{ marginTop: "var(--p-space-5)" }}>
+                            <div style={{ marginTop: "var(--p-space-5)", marginBottom:'var(--p-space-8)' }}>
                                 <VerticalStack>
                                     <HorizontalStack align="space-between">
                                         <Text
@@ -73,8 +68,8 @@ export const ThemesPage = () => {
                                         >
                                             Themes
                                         </Text>
-                                        <HorizontalStack align="center">
-                                            <Icon source={ViewMajor} />
+                                        <HorizontalStack align="center" gap='2' blockAlign="center">
+                                            <Icon source={ViewMinor} />
                                             <Text variant="bodysm">
                                                 View your store
                                             </Text>
@@ -83,10 +78,10 @@ export const ThemesPage = () => {
                                 </VerticalStack>
                             </div>
                         </Layout.Section>
-                        <Layout.Section oneHalf>
-                            <MockupContainer />
+                        <Layout.Section >
+                            <MockupCard />
                         </Layout.Section>
-                        <Layout.Section oneHalf>
+                        <Layout.Section >
                             <LegacyCard>
                                 <LegacyCard.Header title="Theme Library">
                                     <Popover
