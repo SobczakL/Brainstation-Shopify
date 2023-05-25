@@ -12,12 +12,9 @@
     "embla-carousel-react": "^8.0.0-rc05",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-id-swiper": "^4.0.0",
-    "react-responsive-carousel": "^3.2.23",
     "react-scripts": "5.0.1",
     "react-simple-maps": "^3.0.0",
     "sass": "^1.62.1",
-    "swiper": "^9.3.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
