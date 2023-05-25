@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { HorizontalStack, Box, Text, Image, VerticalStack } from '@shopify/polaris';
+import { useState, useCallback } from 'react';
+import { HorizontalStack, Box, Text, Image, VerticalStack, Icon, Button } from '@shopify/polaris';
 import useEmblaCarousel from 'embla-carousel-react';
+import { CircleLeftMajor, CircleRightMajor} from '@shopify/polaris-icons';
 
 import retail from '../../assets/images/retail.svg';
 import fashion from '../../assets/images/fashion.svg';
@@ -12,7 +13,16 @@ import computer from '../../assets/images/computer_software.svg';
 import other from '../../assets/images/other.svg';
 
 export const IndustryCard = ({handleStepValueChange}) => {
-	const [emblaRef] = useEmblaCarousel();
+	const [emblaRef, emblaApi] = useEmblaCarousel()
+	
+	const scrollPrev = useCallback(() => {
+		console.log('hello')
+		if (emblaApi) emblaApi.scrollPrev()
+	}, [emblaApi])
+
+	const scrollNext = useCallback(() => {
+		if (emblaApi) emblaApi.scrollNext()
+	}, [emblaApi])
 
 	const [activeCard, setActiveCard] = useState(null);
 
@@ -20,6 +30,8 @@ export const IndustryCard = ({handleStepValueChange}) => {
 		setActiveCard(index)
 		handleStepValueChange(card.category)
 	};
+
+	
 
 	const cards = [
 		{
@@ -57,9 +69,18 @@ export const IndustryCard = ({handleStepValueChange}) => {
 	];
 
 	return (
-		<HorizontalStack columns={4} gap='4'>
-			<div ref={emblaRef} style={{ overflow: 'hidden' }}>
-				<div style={{ display: 'flex', width: '100%' }}>
+		<HorizontalStack >
+			<div 
+			ref={emblaRef} style={{ overflow: 'hidden', position: 'relative' }}>
+	
+				<div 
+				style={{ 
+					display: 'flex', 
+					justifyContent:'flex-start',
+					width: '70%', 
+					gap:'16px' 
+				}}
+				>
 					{cards.map((card, index) => {
 						const isActive = activeCard === index
 						return (
@@ -72,12 +93,11 @@ export const IndustryCard = ({handleStepValueChange}) => {
 									alignItems: 'center',
 									justifyContent: 'center',
 									backgroundColor: isActive ? '#a2bcb0' : '#F1F8F5',
-									width: 200,
-									height: 400,
+									width: 100,
+									height: 350,
 									textAlign: 'center',
 									flex: '0 0 50%',
 									minWidth: 0,
-									marginRight: 30,
 									borderRadius: 10,
 									cursor: 'pointer',
 								}}
@@ -97,6 +117,37 @@ export const IndustryCard = ({handleStepValueChange}) => {
 						);
 					})}
 				</div>
+				<button 
+				onClick={scrollPrev}
+				style={{
+					position:'absolute',
+					top:'50%',
+					backgroundColor: 'transparent',
+					borderRadius: '100%',
+					border: 'none',
+					padding: 'none',
+					transform: 'translateY(-50%)',
+					zIndex: 1,
+				}}
+				>
+					<Icon source={CircleLeftMajor} color='subdued'/>
+				</button>
+				<button 
+				onClick={scrollNext}
+				style={{
+					position:'absolute',
+					top:'50%',
+					right:'0',
+					backgroundColor: 'transparent',
+					borderRadius: '100%',
+					border: 'none',
+					padding: 'none',
+					transform: 'translateY(-50%)',
+					zIndex: 1,
+				}}
+				>
+					<Icon source={CircleRightMajor} color='subdued'/>	
+				</button>
 			</div>
 		</HorizontalStack>
 	);
