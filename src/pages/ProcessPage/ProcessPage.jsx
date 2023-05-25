@@ -52,7 +52,7 @@ export const ProcessPage = (props) => {
     ];
 
     return (
-        <Page>
+        <Page fullWidth>
             {props.stepCounter < 5 ? (
                 <MainProcess
                 stepCounter={props.stepCounter}
