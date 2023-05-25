@@ -1,5 +1,5 @@
-import { Text } from '@shopify/polaris';
-import { StepperPill } from '../StepperPill/StepperPill';
+import { Text } from "@shopify/polaris";
+import { StepperPill } from "../StepperPill/StepperPill";
 
 export const StepperContainer = ({ stepCounter }) => {
     const currentStep = stepCounter + 1;
@@ -22,22 +22,24 @@ export const StepperContainer = ({ stepCounter }) => {
     return (
         <div
             style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '8px',
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
             }}
         >
             <div
                 style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    width: '100%',
-                    gap: '8px',
+                    display: "flex",
+                    flexDirection: "row",
+                    width: "100%",
+                    gap: "8px",
                 }}
             >
                 {stepStepper[stepCounter]}
             </div>
-            <Text variant="bodyMd">{ stepCounter < 5 ? `${currentStep} of 5` : 'Done'}</Text>
+            <Text variant="bodyMd">
+                {stepCounter < 5 ? `${currentStep} of 5` : "Done"}
+            </Text>
         </div>
     );
 };

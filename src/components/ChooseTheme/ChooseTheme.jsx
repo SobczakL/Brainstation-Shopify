@@ -4,11 +4,11 @@ import Refresh from "../../assets/themes/Refresh.png";
 import Craft from "../../assets/themes/Craft.png";
 import "./choose-theme.scss";
 
-const ChooseTheme = props => {
+const ChooseTheme = (props) => {
     const cardListRef = useRef(undefined);
     const cardList = [Dawn, Refresh, Craft];
 
-    const handleClassChange = index => {
+    const handleClassChange = (index) => {
         for (let i = 0; i < cardList.length; i++) {
             if (index === i) {
                 cardListRef.current.children[i].classList.value =
@@ -28,7 +28,7 @@ const ChooseTheme = props => {
                         key={i}
                         className="card"
                         name={name}
-                        onClick={e => {
+                        onClick={(e) => {
                             props.handleStepValueChange(name);
                             handleClassChange(i);
                         }}

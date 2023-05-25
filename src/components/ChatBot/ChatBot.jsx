@@ -2,19 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import "./chatbot.scss";
 import Message from "./Message";
 
-const ChatBox = props => {
+const ChatBox = (props) => {
     const msgListRef = useRef(undefined);
     const [isOpen, setIsOpen] = useState(true);
     const [userMsg, setUserMsg] = useState("");
 
-    const handleKeyDown = e => {
+    const handleKeyDown = (e) => {
         if (e.key === "Enter" && e.target.value !== "") {
             props.addMessage(e.target.value, "User");
             setUserMsg("");
         }
     };
 
-    const handleMsgChange = e => {
+    const handleMsgChange = (e) => {
         setUserMsg(e.target.value);
     };
 
@@ -63,8 +63,8 @@ const ChatBox = props => {
                             <input
                                 placeholder="Chat"
                                 value={userMsg}
-                                onChange={e => handleMsgChange(e)}
-                                onKeyDown={e => handleKeyDown(e)}
+                                onChange={(e) => handleMsgChange(e)}
+                                onKeyDown={(e) => handleKeyDown(e)}
                             />
                         </div>
                     </div>

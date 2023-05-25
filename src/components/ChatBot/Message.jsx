@@ -1,8 +1,8 @@
-import React from 'react';
-import './message.scss';
+import React from "react";
+import "./message.scss";
 
-const Message = props => {
-    return props.sender === 'Bot' ? (
+const Message = (props) => {
+    return props.sender === "Bot" ? (
         <div className="message-box message-box--bot">
             <div className="icon icon--bot" />
             <div className="message">{props.msg}</div>

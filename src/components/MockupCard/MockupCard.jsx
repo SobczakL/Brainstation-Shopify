@@ -1,27 +1,35 @@
-import { HorizontalStack, LegacyCard, Text, VerticalStack, Badge, ButtonGroup, Button } from "@shopify/polaris"
-import { HorizontalDotsMinor } from '@shopify/polaris-icons';
-import { MockupContainer } from '../MockupContainer/MockupContainer'
-import mockup from '../../assets/images/Sample Site Image.png'
+import {
+    HorizontalStack,
+    LegacyCard,
+    Text,
+    VerticalStack,
+    Badge,
+    ButtonGroup,
+    Button,
+} from "@shopify/polaris";
+import { HorizontalDotsMinor } from "@shopify/polaris-icons";
+import { MockupContainer } from "../MockupContainer/MockupContainer";
+import mockup from "../../assets/images/Sample Site Image.png";
 
 export const MockupCard = () => {
-    return(
+    return (
         <LegacyCard>
             <LegacyCard.Section>
                 <MockupContainer />
             </LegacyCard.Section>
             <LegacyCard.Section>
                 <HorizontalStack align="space-between">
-                    <HorizontalStack wrap={false} gap='2'>
-                        <img 
-                        src={mockup} 
-                        alt='mockup'
-                        style={{
-                            maxWidth:'100px'
-                        }}
+                    <HorizontalStack wrap={false} gap="2">
+                        <img
+                            src={mockup}
+                            alt="mockup"
+                            style={{
+                                maxWidth: "100px",
+                            }}
                         />
-                        <VerticalStack gap='2'>
-                            <HorizontalStack align='start' gap='3'>
-                                <Text variant='headingSm'>Dawn</Text>
+                        <VerticalStack gap="2">
+                            <HorizontalStack align="start" gap="3">
+                                <Text variant="headingSm">Dawn</Text>
                                 <Badge status="success">Current Theme</Badge>
                             </HorizontalStack>
                             <Text>Added: Thursday at 10:25pm</Text>
@@ -35,5 +43,5 @@ export const MockupCard = () => {
                 </HorizontalStack>
             </LegacyCard.Section>
         </LegacyCard>
-    )
-}
+    );
+};

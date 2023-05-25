@@ -43,7 +43,7 @@ export const ThemesPage = () => {
 
     return (
         <Page fullWidth>
-            <VerticalStack gap='2'>
+            <VerticalStack gap="2">
                 <HorizontalStack align="space-between">
                     <HorizontalStack gap="1">
                         <Icon source={StoreMinor} color="#006D41" />
@@ -55,10 +55,15 @@ export const ThemesPage = () => {
                     </HorizontalStack>
                 </HorizontalStack>
                 <Divider />
-                <Page >
+                <Page>
                     <Layout>
                         <Layout.Section AnnotatedSection>
-                            <div style={{ marginTop: "var(--p-space-5)", marginBottom:'var(--p-space-8)' }}>
+                            <div
+                                style={{
+                                    marginTop: "var(--p-space-5)",
+                                    marginBottom: "var(--p-space-8)",
+                                }}
+                            >
                                 <VerticalStack>
                                     <HorizontalStack align="space-between">
                                         <Text
@@ -68,7 +73,11 @@ export const ThemesPage = () => {
                                         >
                                             Themes
                                         </Text>
-                                        <HorizontalStack align="center" gap='2' blockAlign="center">
+                                        <HorizontalStack
+                                            align="center"
+                                            gap="2"
+                                            blockAlign="center"
+                                        >
                                             <Icon source={ViewMinor} />
                                             <Text variant="bodysm">
                                                 View your store
@@ -78,10 +87,10 @@ export const ThemesPage = () => {
                                 </VerticalStack>
                             </div>
                         </Layout.Section>
-                        <Layout.Section >
+                        <Layout.Section>
                             <MockupCard />
                         </Layout.Section>
-                        <Layout.Section >
+                        <Layout.Section>
                             <LegacyCard>
                                 <LegacyCard.Header title="Theme Library">
                                     <Popover

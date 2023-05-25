@@ -18,7 +18,7 @@ function App() {
     useEffect(() => {
         switch (stepCounter) {
             case 1:
-                addMessage("Where are your business?", "Bot");
+                addMessage("Where are you doing business?", "Bot");
                 break;
             case 2:
                 addMessage("Now it's time to select your store theme", "Bot");
@@ -65,7 +65,7 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stepCounter]);
 
-    window.onhashchange = function () {
+    window.onhashchange = function() {
         setStepCounter(stepCounter - 1);
     };
 
@@ -173,7 +173,7 @@ function App() {
         );
     };
 
-    const handleStepValueChange = updatedValue => {
+    const handleStepValueChange = (updatedValue) => {
         let newStepValues = stepValues.slice();
         newStepValues[stepCounter] = updatedValue;
         setStepValues(newStepValues);
@@ -206,7 +206,7 @@ function App() {
         setmessages([...messages, { message: text, sender: sender }]);
         if (sender === "User") {
             getFeedback(text)
-                .then(response => {
+                .then((response) => {
                     setmessages([
                         ...messages,
                         { message: text, sender: "User" },
@@ -225,7 +225,7 @@ function App() {
                         navigate("/themes");
                     }
                 })
-                .catch(_error => {
+                .catch((_error) => {
                     setmessages([
                         ...messages,
                         { message: text, sender: "User" },
