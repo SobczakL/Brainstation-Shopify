@@ -1,9 +1,10 @@
-import {LegacyCard, EmptyState} from '@shopify/polaris';
+import {LegacyCard, EmptyState, Page} from '@shopify/polaris';
 import emptyState from '../../assets/images/emptystate.png'
 
 export const DashboardContent = ({handleContinueClick}) => {
     return(
-        <LegacyCard sectioned>
+        <Page>
+            <LegacyCard sectioned>
             <EmptyState
             heading="Welcome to Shopify!"
             action={{
@@ -14,6 +15,7 @@ export const DashboardContent = ({handleContinueClick}) => {
             >
                 <p>Let's create your first website together with our Shopify Bot</p>
             </EmptyState>
-        </LegacyCard>
+        </LegacyCard> 
+        </Page>
     )   
 }

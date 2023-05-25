@@ -1,11 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { MainProcess } from "../../components/MainProcess/MainProcess";
 import { WorldMap } from "../../components/WorldMap/WorldMap";
 import { Page, FooterHelp, Link } from "@shopify/polaris";
-import { useState } from "react";
 import { ColorPalette } from "../../components/ColorPalette/ColorPalette";
 import { ConfirmationProcess } from "../../components/ConfirmationProcess/ConfirmationProcess";
 import ChooseTheme from "../../components/ChooseTheme/ChooseTheme";
+import { UserImageSelection } from "../../components/UserImageSelection/UserImageSelection";
 
 export const ProcessPage = (props) => {
     // const [stepCounter, setStepCounter] = useState(0);
@@ -48,12 +47,12 @@ export const ProcessPage = (props) => {
         {   
             key: 'step5',
             title: "Final details",
-            content: '',
+            content: <UserImageSelection />,
         },
     ];
 
     return (
-        <Page>
+        <Page fullWidth>
             {props.stepCounter < 5 ? (
                 <MainProcess
                 stepCounter={props.stepCounter}

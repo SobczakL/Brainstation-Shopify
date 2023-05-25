@@ -8,6 +8,8 @@ import { getFeedback } from "./axios";
 
 import "./App.scss";
 import { Nav } from "./components/Nav/Nav";
+import { SideNav } from './components/SideNav/SideNav'
+import { Frame } from "@shopify/polaris";
 
 function App() {
     const [stepCounter, setStepCounter] = useState(0);
@@ -215,8 +217,10 @@ function App() {
     };
 
     return (
-        <>
-            <Nav />
+        <Frame
+        topBar={<Nav />}
+        navigation={<SideNav />}
+        >
             <ChatBox messages={messages} addMessage={addMessage} />
             <BrowserRouter>
                 <Routes>
@@ -241,7 +245,7 @@ function App() {
                     <Route path="/themes" element={<ThemesPage />} />
                 </Routes>
             </BrowserRouter>
-        </>
+        </Frame>
     );
 }
 
