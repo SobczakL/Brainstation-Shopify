@@ -4,6 +4,11 @@ import { RefreshMajor } from '@shopify/polaris-icons';
 
 export const ColorPalette = ({handleStepValueChange}) => {
 
+    const defaultPalette = {
+        title:'Default',
+        colors:['#000000', '#333333', '#666666', '#999999', '#CCCCCC']
+    }
+
     const palettes = [
         {
             title:'Warm',
@@ -11,27 +16,27 @@ export const ColorPalette = ({handleStepValueChange}) => {
         },
         {
             title:'Cold',
-            colors:[]
+            colors:['#BEE9E8', '#62B6CB', '#1B4965', '#1B4965', '#5FA8D3']
         },
         {
             title:'Bright',
-            colors:[]
+            colors:['#E89005', '#E67F0D', '#E67F0D', '#E9190F', '#FF0F80']
         },
         {
             title:'Dark',
-            colors:[]
+            colors:['#191528', '#3C162F', '#5C162E', '#7C162E', '#110E1B']
         },
         {
             title:'Monochromatic',
-            colors:[]
+            colors:['#E9F5DB', '#CFE1B9', '#B5C99A', '#97A97C', '#87986A']
         },
         {
             title:'Bold',
-            colors:[]
+            colors:['#D90429', '#EF233C', '#EDF2F4', '#8D99AE', '#2B2D42']
         }
     ]
 
-    const [currentPalette, setCurrentPalette] = useState(palettes[0])
+    const [currentPalette, setCurrentPalette] = useState(defaultPalette)
 
     const handlePaletteChange = (palette) => {
         setCurrentPalette(palette)
@@ -49,9 +54,9 @@ export const ColorPalette = ({handleStepValueChange}) => {
                 flexDirection:'column',
                 gap:'8px',
                 backgroundColor:'#FAFBFB',
-                padding:'8px'
+                padding:'0 8px 0 8px'
             }}>
-                <Text variant='bodyMd'>Style Descriptor:</Text>
+                <Text variant='headingSm'>Style Descriptor:</Text>
                 <ChoiceList
                     choices={palettes.map((palette, i) => ({
                         key: i,
@@ -67,10 +72,8 @@ export const ColorPalette = ({handleStepValueChange}) => {
                     }}
                 />
             </div>
-            <VerticalStack 
-            gap='2'
-            >
-                <Text variant='bodyMd'>Colour Palette:</Text>
+            <VerticalStack gap='2'>
+                <Text variant='headingSm' as='h6'>Colour Palette:</Text>
                 <HorizontalStack>
                     {currentPalette.colors.map((color, i) => {
                         return (
@@ -83,8 +86,15 @@ export const ColorPalette = ({handleStepValueChange}) => {
                         )
                     })}
                 </HorizontalStack>
-                <Box maxWidth="fit-content">
-                    <Button icon={RefreshMajor} onClick={handleRefresh}>Refresh</Button>
+                <Box maxWidth="fit-content" padding='3'>
+                    <Button 
+                    icon={RefreshMajor} 
+                    onClick={handleRefresh}  
+                    plain 
+                    monochrome 
+                    >
+                        Refresh
+                    </Button>
                 </Box>
             </VerticalStack>
         </HorizontalStack>
