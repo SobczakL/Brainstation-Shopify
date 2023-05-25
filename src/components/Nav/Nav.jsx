@@ -1,7 +1,7 @@
-import bag from "../../assets/bag.svg";
-import logo from "../../assets/logo.svg";
-import flag from "../../assets/flag.png";
-import bell from "../../assets/bell.png";
+import bag from "../../assets/icons/bag.svg";
+import logo from "../../assets/icons/logo.svg";
+import flag from "../../assets/icons/flag.png";
+import bell from "../../assets/icons/bell.png";
 
 import "./Nav.scss";
 

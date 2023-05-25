@@ -46,6 +46,7 @@ export const ProcessPage = (props) => {
 					stepCounter={props.stepCounter}
 					handleStepChange={props.handleStepChange}
 					stepContent={steps[props.stepCounter]}
+					skipSteps={props.skipSteps}
 				/>
 			) : (
 				<ConfirmationProcess stepCounter={props.stepCounter} />

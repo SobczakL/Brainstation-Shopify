@@ -154,6 +154,7 @@ function App() {
     };
 
     const skipSteps = () => {
+        navigate('/themes')
         addMessage(
             <div>
                 You've selected to Skip - no worries! You can always come back
