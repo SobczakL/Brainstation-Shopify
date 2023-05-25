@@ -8,7 +8,7 @@ import { getFeedback } from "./axios";
 
 import "./App.scss";
 import { Nav } from "./components/Nav/Nav";
-import { SideNav } from './components/SideNav/SideNav'
+import { SideNav } from "./components/SideNav/SideNav";
 import { Frame } from "@shopify/polaris";
 
 function App() {
@@ -163,7 +163,6 @@ function App() {
         );
     };
 
-    //when steps[stepCounter].content receives a value, update stepValues for chatBox
     const handleStepValueChange = updatedValue => {
         let newStepValues = stepValues.slice();
         newStepValues[stepCounter] = updatedValue;
@@ -204,8 +203,9 @@ function App() {
                         { message: response.data.answer, sender: "Bot" },
                     ]);
                     const keyWord = response.data.intent.split("-");
-                    if (keyWord[0] === "user.step")
+                    if (keyWord[0] === "nav.step") {
                         setStepCounter(Number(keyWord[1]) - 1);
+                    }
                 })
                 .catch(_error => {
                     setmessages([
@@ -217,10 +217,7 @@ function App() {
     };
 
     return (
-        <Frame
-        topBar={<Nav />}
-        navigation={<SideNav />}
-        >
+        <Frame topBar={<Nav />} navigation={<SideNav />}>
             <ChatBox messages={messages} addMessage={addMessage} />
             <BrowserRouter>
                 <Routes>
