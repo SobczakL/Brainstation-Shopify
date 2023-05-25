@@ -60,9 +60,13 @@ function App() {
         }
     }, [stepCounter]);
 
+    window.onhashchange = function () {
+        setStepCounter(stepCounter - 1);
+    };
+
     const handleStepChange = () => {
         if (stepCounter < 5) {
-            // if (stepValues[stepCounter] !== '') {
+            // if (stepValues[stepCounter] !== "") {
             setStepCounter(stepCounter + 1);
             // }
 
@@ -70,7 +74,9 @@ function App() {
                 case 0:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose your business type!",
+                            <div className="warning">
+                                Warning! You didn't choose your business type!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -83,7 +89,10 @@ function App() {
                 case 1:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the location of your business!",
+                            <div className="warning">
+                                Warning! You didn't choose the location of your
+                                business!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -96,7 +105,9 @@ function App() {
                 case 2:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the your theme!",
+                            <div className="warning">
+                                Warning! You didn't choose the your theme!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -109,7 +120,10 @@ function App() {
                 case 3:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't choose the your color palette!",
+                            <div className="warning">
+                                Warning! You didn't choose the your color
+                                palette!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -122,7 +136,9 @@ function App() {
                 case 4:
                     if (stepValues[stepCounter] === "") {
                         addMessage(
-                            "Warning! You didn't upload the details!",
+                            <div className="warning">
+                                Warning! You didn't upload the details!
+                            </div>,
                             "Bot"
                         );
                     } else {
@@ -151,12 +167,12 @@ function App() {
         setStepValues(newStepValues);
 
         if (stepValues[stepCounter] === "") {
-            addMessage(updatedValue, "User");
+            addMessage(updatedValue, "Click");
         } else {
             const newMessages = messages.slice(0, -1);
             setmessages([
                 ...newMessages,
-                { message: updatedValue, sender: "User" },
+                { message: updatedValue, sender: "Click" },
             ]);
         }
     };
