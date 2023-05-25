@@ -11,17 +11,17 @@ import wholesale from '../../assets/images/wholesale.svg';
 import computer from '../../assets/images/computer_software.svg';
 import other from '../../assets/images/other.svg';
 
-export const IndustryCard = () => {
+export const IndustryCard = ({handleStepValueChange}) => {
 	const [emblaRef] = useEmblaCarousel();
-	const [active, setActive] = useState('#a2bcb0');
 
-	const handleClick = (e) => {
-		e.currentTarget.style.backgroundColor = '#a2bcb0';
-		e.currentTarget.style.color = '#fff';
-		setActive('#a2bcb0');
+	const [activeCard, setActiveCard] = useState(null);
+
+	const handleClick = (card, index) => {
+		setActiveCard(index)
+		handleStepValueChange(card.category)
 	};
 
-	const card = [
+	const cards = [
 		{
 			category: 'Retail',
 			image: retail,
@@ -60,17 +60,18 @@ export const IndustryCard = () => {
 		<HorizontalStack columns={4} gap='4'>
 			<div ref={emblaRef} style={{ overflow: 'hidden' }}>
 				<div style={{ display: 'flex', width: '100%' }}>
-					{card.map((everyItem, index) => {
+					{cards.map((card, index) => {
+						const isActive = activeCard === index
 						return (
 							<Box
 								className='embla__slide'
 								key={index}
-								onClick={handleClick}
+								onClick={() => handleClick(card, index)}
 								style={{
 									display: 'flex',
 									alignItems: 'center',
 									justifyContent: 'center',
-									backgroundColor: active === '#a2bcb0' ? '#F1F8F5' : '#a2bcb0',
+									backgroundColor: isActive ? '#a2bcb0' : '#F1F8F5',
 									width: 200,
 									height: 400,
 									textAlign: 'center',
@@ -83,14 +84,14 @@ export const IndustryCard = () => {
 							>
 								<VerticalStack gap='10'>
 									<Image
-										source={everyItem.image}
+										source={card.image}
 										style={{
 											width: 40,
 											height: 40,
 											margin: 'auto',
 										}}
 									/>
-									<Text variant='headingLg'>{everyItem.category}</Text>
+									<Text variant='headingLg'>{card.category}</Text>
 								</VerticalStack>
 							</Box>
 						);
