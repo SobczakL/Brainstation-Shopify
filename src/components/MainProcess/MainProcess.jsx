@@ -26,7 +26,7 @@ export const MainProcess = ({ stepCounter, handleStepChange, stepContent }) => {
                         onAction: handleSkip
                     }]}
                     primaryFooterAction={{
-                        content: 'Continue',
+                        content: stepCounter < 5 ? 'Continue' : 'Finish',
                         onAction: handleStepChange
                     }}
                     >
