@@ -1,31 +1,26 @@
-import { HorizontalStack, LegacyCard, Text, VerticalStack, Box, Badge, ButtonGroup, Button } from "@shopify/polaris"
-import { HorizontalDotsMinor } from '@shopify/polaris-icons';
+import { Box, HorizontalStack } from "@shopify/polaris"
+import compMockup from '../../assets/images/SampleSiteMockup 2.png'
+import mobileMockup from '../../assets/images/Mobile Mockuop 2.png'
 
 export const MockupContainer = () => {
     return(
-        <LegacyCard>
-            <LegacyCard.Section>
-                <img src={''} alt=""/>
-            </LegacyCard.Section>
-            <LegacyCard.Section>
-                <HorizontalStack align="space-between">
-                    <HorizontalStack wrap={false}>
-                        <img src={''} alt=''/>
-                        <VerticalStack gap='2'>
-                            <HorizontalStack align='start' gap='3'>
-                                <Text variant='headingSm'>Dawn</Text>
-                                <Badge status="success">Current Theme</Badge>
-                            </HorizontalStack>
-                            <Text>Added: Thursday at 10:25pm</Text>
-                            <Text>Dawn version 9.0.0</Text>
-                        </VerticalStack>
-                    </HorizontalStack>
-                    <ButtonGroup>
-                        <Button icon={HorizontalDotsMinor}></Button>
-                        <Button primary>Customize</Button>
-                    </ButtonGroup>
-                </HorizontalStack>
-            </LegacyCard.Section>
-        </LegacyCard>
+        <Box>
+            <HorizontalStack gap='3' align="center" blockAlign="baseline">
+                <img 
+                src={compMockup} 
+                alt="Web mockup" 
+                style={{
+                    maxWidth: '500px',
+                    height:'100%'
+                }}/>
+                <img 
+                src={mobileMockup} 
+                alt="Mobile mockup" 
+                style={{
+                    maxWidth: '225px',
+                    height:'100%'
+                }}/>
+            </HorizontalStack>
+        </Box>
     )
 }
