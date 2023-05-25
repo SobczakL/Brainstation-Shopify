@@ -164,7 +164,7 @@ function App() {
         );
     };
 
-    const [stepValues, setStepValues] = useState(new Array(5).fill(""));
+    const [stepValues, setStepValues] = useState(["", "", "", "", "upload"]);
 
     const handleContinueClick = () => {
         addMessage(
