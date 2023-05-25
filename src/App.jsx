@@ -12,7 +12,7 @@ import { SideNav } from "./components/SideNav/SideNav";
 import { Frame } from "@shopify/polaris";
 
 function App() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [stepCounter, setStepCounter] = useState(0);
 
     useEffect(() => {
@@ -71,9 +71,9 @@ function App() {
 
     const handleStepChange = () => {
         if (stepCounter < 5) {
-            // if (stepValues[stepCounter] !== "") {
-            setStepCounter(stepCounter + 1);
-            // }
+            if (stepValues[stepCounter] !== "") {
+                setStepCounter(stepCounter + 1);
+            }
 
             switch (stepCounter) {
                 case 0:
@@ -154,7 +154,7 @@ function App() {
     };
 
     const skipSteps = () => {
-        navigate('/themes')
+        navigate("/themes");
         addMessage(
             <div>
                 You've selected to Skip - no worries! You can always come back
@@ -164,7 +164,7 @@ function App() {
         );
     };
 
-    const [stepValues, setStepValues] = useState(new Array(5).fill(""));
+    const [stepValues, setStepValues] = useState(["", "", "", "", "upload"]);
 
     const handleContinueClick = () => {
         addMessage(
@@ -214,14 +214,15 @@ function App() {
                     ]);
                     const keyWord = response.data.intent.split("-");
                     if (keyWord[0] === "nav.step") {
-                        navigate('/process-page')
+                        navigate("/process-page");
                         setStepCounter(Number(keyWord[1]) - 1);
                     }
-                    if(keyWord[0] === 'nav.home'){
-                        navigate('/')
+                    if (keyWord[0] === "nav.home") {
+                        setStepCounter(0);
+                        navigate("/");
                     }
-                    if(keyWord[0] === 'nav.themes'){
-                        navigate('/themes')
+                    if (keyWord[0] === "nav.themes") {
+                        navigate("/themes");
                     }
                 })
                 .catch(_error => {
