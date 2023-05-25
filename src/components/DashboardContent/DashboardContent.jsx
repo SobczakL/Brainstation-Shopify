@@ -13,7 +13,7 @@ export const DashboardContent = ({handleContinueClick}) => {
             }}
             image={emptyState}
             >
-                <p>Let's create your first website together with our Shopify Bot</p>
+                <p>Set up your online store with the help of our chatbot, Ada</p>
             </EmptyState>
         </LegacyCard> 
         </Page>

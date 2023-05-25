@@ -14,7 +14,7 @@ export const ProcessPage = (props) => {
 	const steps = [
 		{
 			key: 'step1',
-			title: 'What kind of work do you do?',
+			title: 'What type of business do you have?',
 			content: <IndustryCard handleStepValueChange={props.handleStepValueChange} />,
 		},
 		{
