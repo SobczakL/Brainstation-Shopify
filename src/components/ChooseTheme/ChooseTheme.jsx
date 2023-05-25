@@ -17,7 +17,7 @@ const ChooseTheme = props => {
                         onClick={() => props.handleStepValueChange(name)}
                     >
                         <div className="card__img">
-                            <img src={card} />
+                            <img src={card} alt={name}/>
                         </div>
                         <div className="card__title">
                             <span>{name}</span>
