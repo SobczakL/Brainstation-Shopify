@@ -14,9 +14,7 @@ export const WorldMap = ({handleStepValueChange}) => {
     };
 
     return(
-        <ComposableMap
-        height='500'
-        >
+        <ComposableMap>
             <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                 geographies.map((geo) => (

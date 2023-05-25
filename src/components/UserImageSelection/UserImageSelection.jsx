@@ -33,7 +33,7 @@ export const UserImageSelection = () => {
     return(
         <HorizontalStack gap='10'>
             <VerticalStack gap='6'>
-                <ImageUploadContainer title='Logo' onClick={handleLogoUpload}/>
+                <ImageUploadContainer title='Logo' icon={InfoMinor} onClick={handleLogoUpload}/>
                 <SliderContainer handleSliderChange={handleSliderChange}/>
                 <ImageUploadContainer title='Favicon Image' icon={InfoMinor} onClick={handleFaviconUpload}/> 
             </VerticalStack>

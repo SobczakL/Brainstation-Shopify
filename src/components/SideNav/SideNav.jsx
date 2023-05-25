@@ -21,54 +21,62 @@ export const SideNav = () => {
   	const pathname = location.pathname;
   	const pageRefConfirmation = pathname === '/themes';
 
+	let mainList = [
+		{
+			label: 'Home',
+			icon: HomeMinor,
+			selected: !pageRefConfirmation,
+		},
+		{
+			label: 'Orders',
+			icon: OrdersMinor,
+		},
+		{
+			label: 'Products',
+			icon: ProductsMinor,
+		},
+		{
+			label: 'Customers',
+			icon: CustomersMajor,
+		},
+		{
+			label: 'Finances',
+			icon: FinancesMinor,
+		},
+		{
+			label: 'Analytics',
+			icon: AnalyticsMajor,
+		},
+		{
+			label: 'Marketing',
+			icon: MarketingMajor,
+		},
+		{
+			label: 'Discounts',
+			icon: DiscountsMajor,
+		},
+	];
+
+	for (let i in mainList) {
+		mainList[i].key = mainList[i].label;
+	}
+
 	return (
 			<Navigation location='/'>
 				<Navigation.Section
-					items={[
-						{
-							label: 'Home',
-							icon: HomeMinor,
-							selected: !pageRefConfirmation,
-						},
-						{
-							label: 'Orders',
-							icon: OrdersMinor,
-						},
-						{
-							label: 'Products',
-							icon: ProductsMinor,
-						},
-						{
-							label: 'Customers',
-							icon: CustomersMajor,
-						},
-						{
-							label: 'Finances',
-							icon: FinancesMinor,
-						},
-						{
-							label: 'Analytics',
-							icon: AnalyticsMajor,
-						},
-						{
-							label: 'Marketing',
-							icon: MarketingMajor,
-						},
-						{
-							label: 'Discounts',
-							icon: DiscountsMajor,
-						},
-					]}
+					items={mainList}
 				/>
 				<Navigation.Section
 					title='Sales channels'
 					items={[
 						{
+							key: 'Online Store',
 							label: 'Online Store',
 							icon: OnlineStoreMinor,
 							selected: pageRefConfirmation
 						},
 						{
+							key: 'Point of Sale',
 							label: 'Point of Sale',
 							icon: PointOfSaleMajor,
 						},
@@ -82,7 +90,7 @@ export const SideNav = () => {
 				<Navigation.Section
 					title='Apps'
 					items={[
-						{}
+						{key: '1'}
 					]}
 					action={{
 						accessibilityLabel: 'Add sales channel',
