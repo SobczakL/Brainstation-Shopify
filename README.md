@@ -17,7 +17,7 @@ Team Members:
 - Adeline Zelyony (Data Science)
 ---
 ## Demo
-https://github.com/user-attachments/assets/3aa3e0db-3479-4850-9617-508a3f41253e
+[Watch Demo](https://github.com/user-attachments/assets/3aa3e0db-3479-4850-9617-508a3f41253e)
 ---
 ## **Setup:**
 
