@@ -16,6 +16,9 @@ Team Members:
 - Priscilla Liang (Data Science)
 - Adeline Zelyony (Data Science)
 ---
+## Demo
+https://github.com/user-attachments/assets/3aa3e0db-3479-4850-9617-508a3f41253e
+---
 ## **Setup:**
 
 #### **Required:**
